@@ -1,0 +1,24 @@
+.chat-row{
+    margin: 50px;
+}
+
+.chat-user-list{
+    list-style: none;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.user-image{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+.user-image-name{
+    padding: 7px;
+
+}
+.user-name {
+    padding: 0.5rem;
+    text-underline-offset: unset;
+    text-decoration: none;
+}
