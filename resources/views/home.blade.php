@@ -37,6 +37,7 @@
                 <i class="fa-regular fa-circle text-dark  user-status-head" title="away"></i>
               </li>
         </div>
+        <hr>
         <div class="converation-message">
             <div class="chat-header">
                 <li class="chat-user-list d-flex ">
@@ -55,7 +56,7 @@
             </div>
         </div>
         <div class="input">
-            <div id="input-field"></div>
+            <textarea name="message" id="input-field"></textarea>
         </div>
        
     </div>
