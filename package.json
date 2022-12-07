@@ -17,6 +17,8 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "express": "^4.18.2",
+        "socket.io": "^4.5.4",
         "summernote": "^0.8.20"
     }
 }

@@ -14,7 +14,7 @@
                         <div class="user-image-name"><center>  {{makeImageFromName($user->name)}} </center></div>
                        
                     </div>
-                    <i class="fa-regular fa-circle text-dark status"></i>
+                    <i class="fa-solid fa-circle text-dark status user-icon-{{$user->id}}" title="away"></i>
                     <a href="" class="user-name">
                         {{$user->name}}
                     </a>
@@ -34,7 +34,7 @@
                 <a href="" class="user-name-head">
                     Malik Abdullah
                 </a>
-                <i class="fa-regular fa-circle text-dark  user-status-head" title="away"></i>
+                <i class="fa-solid fa-circle text-dark user-status-head" title="away"></i>
               </li>
         </div>
         <hr>
@@ -60,12 +60,34 @@
         </div>
        
     </div>
-    
-  
 </div>
 @endsection
-@section('script')
+@push('scripts')
 <script>
     $('#input-field').summernote({ });
-  </script>
-@endsection
+        $(function (){
+            
+            let user_id = "{{ auth()->user()->id }}";
+            let ip_address = '127.0.0.1';
+            let socket_port = '8001';
+            let socket = io(ip_address + ':' + socket_port);
+            
+            socket.on('connect', function() {
+               socket.emit('user_connected', user_id);
+            });
+            
+            socket.on('updateUserStatus', (data) => {
+                $.each(data, function (key, val) {
+                
+                   if (val !== null && val !== 0) {
+                      let $userIcon = $(".user-icon-"+key);
+                      $userIcon.removeClass('text-dark');
+                      $userIcon.addClass('text-success');
+                      $userIcon.attr('title','Online');
+                   }
+                });
+            });
+        
+        });
+    </script>
+@endpush
