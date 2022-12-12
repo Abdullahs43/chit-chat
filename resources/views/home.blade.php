@@ -56,22 +56,24 @@
             </div>
         </div>
         <div class="input">
-            <textarea name="message" id="input-field"></textarea>
+            <textarea name="message" id="input_field"></textarea>
         </div>
        
     </div>
 </div>
 @endsection
 @push('scripts')
+
 <script>
-    $('#input-field').summernote({ });
+    $('#input_field').summernote({ });
         $(function (){
-            
+            let chatInput = $('.note-editable');
             let user_id = "{{ auth()->user()->id }}";
             let ip_address = '127.0.0.1';
             let socket_port = '8001';
             let socket = io(ip_address + ':' + socket_port);
-            
+            let friendId = 10;
+
             socket.on('connect', function() {
                socket.emit('user_connected', user_id);
             });
@@ -87,6 +89,41 @@
                    }
                 });
             });
+
+
+            chatInput.keypress(function (e) {
+               let message = $(this).html();
+               console.log(e.which);
+               if (e.which === 113 && !e.shiftKey) {
+                   chatInput.html("");
+                   sendMessage(message);
+                   return false;
+               }
+            });
+            function sendMessage(message) {
+                let url = "{{ route('message.send-message') }}";
+                let form = $(this);
+                let formData = new FormData();
+                let token = "{{ csrf_token() }}";
+                formData.append('message', message);
+                formData.append('_token', token);
+                formData.append('receiver_id', friendId);
+              
+           
+                $.ajax({
+                   url: url,
+                   type: 'POST',
+                   data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'JSON',
+                   success: function (response) {
+                       if (response.success) {
+                           console.log(response.data);
+                       }
+                   }
+                });
+            }
         
         });
     </script>
