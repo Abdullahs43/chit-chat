@@ -1,0 +1,92 @@
+body{
+    font-size: 18px;
+}
+.chat-row{
+    margin: 50px;
+}
+
+.chat-user-list{
+    list-style: none;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.user-image{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+.user-image-name{
+    padding: 7px;
+
+}
+.user-name {
+    padding: 0.5rem;
+    text-underline-offset: unset;
+    text-decoration: none;
+    margin-left: -19px;
+}
+.conversation-section{
+    background-color:white;
+    min-height: calc(100vh - 400px);
+}
+
+.status {
+    position: relative;
+    top: 2px;
+    right: 14px;
+    color: #8050c8;
+}
+.active {
+  background: aquamarine;
+}
+.user-status-head{
+    position: relative;
+    margin-left: 7px;
+    margin-top: 11px;
+}
+.user-name-head{
+    margin-left: 8px;
+    margin-top: 6px;
+    text-decoration: none;
+}
+.user-in-coversation{
+    margin-left: 5px;
+    text-decoration: none;
+    margin-top: 4px;
+}
+.time{
+    margin: 3px;
+}
+.converation-message{
+    margin-top: 1rem;
+    margin-left: 3rem;
+}
+.message{
+    margin-left: 3rem;
+}
+.input{
+    position: relative;
+    bottom: -400px;
+}
+
+.users
+{   
+     max-height: 75vh;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: red;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+     background: #b30000;
+}
+
+

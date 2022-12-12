@@ -15,5 +15,11 @@
         "sass": "^1.32.11",
         "vite": "^3.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "jquery": "^3.6.1",
+        "socket.io": "^4.5.4",
+        "summernote": "^0.8.20"
     }
 }
